@@ -11,6 +11,7 @@ pipelines:
         shallow_clone: false
         auto_update: false
         branch: main
+        webhook_secret: "devops1token8demo"
     stages:
     - test:
         fetch_materials: true
