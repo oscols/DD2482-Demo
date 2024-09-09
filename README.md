@@ -1,6 +1,6 @@
 # DD2482-Demo
 
-GoCD demo for DD2482 Automated Software Testing and DevOps
+GoCD demo for DD2482 Automated Software Testing and DevOpss
 
 - Step 1: Run: ngrok http 3000
 
