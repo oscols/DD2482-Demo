@@ -1,0 +1,36 @@
+format_version: 10
+pipelines:
+  code-test:
+    group: CI-CD-Demo
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-ab60575:
+        git: README.md
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+    - curl:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          curl:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - -X
+                - POST
+                - -d
+                - '{}'
+                - https://webhooks.amplify.eu-north-1.amazonaws.com/prod/webhooks?id=b57011c8-555a-4e3f-a42b-cb98da6bfbee&token=ARd5niqCMa78GxjXxgBmk99klDQHbOnPZo1yQcs5Io&operation=startbuild
+                - -H
+                - Content-Type:application/json
+                command: curl
+                run_if: passed
