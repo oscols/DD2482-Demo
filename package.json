@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "acceptance-test": "vitest"
+
   },
   "dependencies": {
     "vue": "^3.4.29"

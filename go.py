@@ -21,7 +21,7 @@ test_job.add_task(ExecTask(['npm', 'test']))
 ##### ACCEPTANCE TEST #####
 acceptance_test_stage = pipeline.ensure_stage("AcceptanceTests")
 acceptance_test_job = acceptance_test_stage.ensure_job("Run-Acceptance-Tests")
-acceptance_test_job.add_task(ExecTask(['npm', 'acceptance_test']))
+acceptance_test_job.add_task(ExecTask(['npm', 'run', 'acceptance_test']))
 
 ##### DEPLOY TO STAGING #####
 deploy_to_staging_stage = pipeline.ensure_stage("Deploy-To-Staging")
