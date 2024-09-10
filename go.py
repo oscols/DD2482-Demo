@@ -6,8 +6,6 @@ import os
 
 git_token = os.getenv("GITHUB_TOKEN")
 
-print(git_token)
-
 pipeline = configurator \
     .ensure_pipeline_group("CD-Demo") \
     .ensure_replacement_of_pipeline("Continuous-Delivery") \
@@ -22,12 +20,12 @@ build_job.add_task(ExecTask(['npm', 'run', 'build']))
 ##### TEST ######
 test_stage = pipeline.ensure_stage("Test")
 test_job = test_stage.ensure_job("Run-Tests")
-test_job.add_task(ExecTask(['type', 'README.md']))
+test_job.add_task(ExecTask(['npm', 'run', 'test']))
 
 ##### ACCEPTANCE TEST #####
 acceptance_test_stage = pipeline.ensure_stage("AcceptanceTests")
 acceptance_test_job = acceptance_test_stage.ensure_job("Run-Acceptance-Tests")
-acceptance_test_job.add_task(ExecTask(['type', 'README.md']))
+acceptance_test_job.add_task(ExecTask(['npm', 'run', 'acceptance-test']))
 
 ##### MOVE TO MAIN #####
 deploy_to_staging_stage = pipeline.ensure_stage("Deploy-To-Staging")
@@ -35,6 +33,13 @@ deploy_to_staging_job = deploy_to_staging_stage.ensure_job("Merge-To-Main")
 deploy_to_staging_job.add_task(ExecTask(['git', 'fetch', 'origin']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'checkout', 'main']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'pull', 'origin', 'main']))
+deploy_to_staging_job.add_task(ExecTask(['git', 'config', '--global', 'user.email', 'oscols@kth.se']))
+deploy_to_staging_job.add_task(ExecTask(['git', 'config', '--global', 'user.name', 'oscols']))
+
 deploy_to_staging_job.add_task(ExecTask(['git', 'merge', 'dev', '-m', 'Automatic merge of dev into main', '--no-ff']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'remote', '-v']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'push', 'origin', 'main']))
+
+##### DEPLOY #########
+
+configurator.save_updated_config()
