@@ -4,7 +4,7 @@ configurator = GoCdConfigurator(HostRestClient("localhost:8153"))
 
 import os
 
-git_token = os.getenv("GITHUB_TOKEN")
+git_token = os.getenv("GIT_TOKEN")
 
 print(git_token)
 
@@ -40,3 +40,5 @@ deploy_to_staging_job.add_task(ExecTask(['git', 'remote', '-v']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'push', 'origin', 'main']))
 
 ##### DEPLOY ########
+
+configurator.save_updated_config()
