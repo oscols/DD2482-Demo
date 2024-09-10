@@ -4,7 +4,7 @@ configurator = GoCdConfigurator(HostRestClient("localhost:8153"))
 
 import os
 
-git_token = os.getenv("GIT_TOKEN")
+git_token = os.getenv("GITHUB_TOKEN")
 
 print(git_token)
 
