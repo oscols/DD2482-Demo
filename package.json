@@ -9,10 +9,11 @@
     "preview": "vite preview",
     "test": "vitest",
     "acceptance-test": "vitest"
-
   },
   "dependencies": {
-    "vue": "^3.4.29"
+    "chart.js": "^4.4.4",
+    "vue": "^3.4.29",
+    "vue-chartjs": "^5.3.1"
   },
   "devDependencies": {
     "@testing-library/vue": "^8.1.0",
