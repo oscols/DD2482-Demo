@@ -15,9 +15,10 @@
       LineChart: Line
     },
     data() {
+        const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
       return {
         chartData: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          labels: labels,
           datasets: [
             {
               label: 'Data One',
