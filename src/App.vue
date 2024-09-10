@@ -1,6 +1,6 @@
 <template>
-  <!-- <h2>{{ msg }}</h2>
-  <input v-model="msg"> -->
+  <h2>{{ msg }}</h2>
+  <input v-model="msg">
   <div id="app">
     <line-chart v-if="chartData" :chart-data="chartData" :options="chartOptions"></line-chart>
   </div>
