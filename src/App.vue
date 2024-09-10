@@ -37,23 +37,23 @@ export default {
   components: {
     LineChart
   },
-  mounted() {
-    this.chartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'Data One',
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          pointBackgroundColor: 'rgba(75, 192, 192, 1)',
-          pointBorderColor: '#fff',
-          data: [40, 39, 10, 40, 39, 80, 40],
-          fill: true
-        }
-      ]
-    };
-  console.log(this.chartData);
-  }
+  // mounted() {
+  //   this.chartData = {
+  //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  //     datasets: [
+  //       {
+  //         label: 'Data One',
+  //         backgroundColor: 'rgba(75, 192, 192, 0.2)',
+  //         borderColor: 'rgba(75, 192, 192, 1)',
+  //         pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+  //         pointBorderColor: '#fff',
+  //         data: [40, 39, 10, 40, 39, 80, 40],
+  //         fill: true
+  //       }
+  //     ]
+  //   };
+  // console.log(this.chartData);
+  // }
 }
 
 </script>
