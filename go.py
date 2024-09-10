@@ -4,9 +4,7 @@ configurator = GoCdConfigurator(HostRestClient("localhost:8153"))
 
 import os
 
-git_token = os.getenv("GIT_TOKEN")
-
-print(git_token)
+git_token = os.getenv("GITHUB_TOKEN")
 
 pipeline = configurator \
     .ensure_pipeline_group("CD-Demo") \
