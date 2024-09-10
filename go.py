@@ -28,9 +28,4 @@ deploy_to_staging_stage = pipeline.ensure_stage("Deploy-To-Staging")
 deploy_to_staging_job = deploy_to_staging_stage.ensure_job("Merge-To-Main")
 deploy_to_staging_job.add_task(ExecTask(['cat', 'README.md']))
 
-##### DEPLOY TO PRODUCTION #####
-deploy_to_production_stage = pipeline.ensure_stage("Deploy-To-Production")
-deploy_to_production_job = deploy_to_production_stage.ensure_job("Deploy-to-AWS")
-deploy_to_production_job.add_task(ExecTask(['curl', '-X', 'POST', '-d', '{}', 'https://webhooks.amplify.eu-north-1.amazonaws.com/prod/webhooks?id=b57011c8-555a-4e3f-a42b-cb98da6bfbee&token=ARd5niqCMa78GxjXxgBmk99klDQHbOnPZo1yQcs5Io&operation=startbuild', '-H', 'Content-Type:application/json']))
-
 configurator.save_updated_config()
