@@ -22,12 +22,12 @@ build_job.add_task(ExecTask(['npm', 'run', 'build']))
 ##### TEST ######
 test_stage = pipeline.ensure_stage("Test")
 test_job = test_stage.ensure_job("Run-Tests")
-test_job.add_task(ExecTask(['type', 'README.md']))
+test_job.add_task(ExecTask(['npm', 'run', 'test']))
 
 ##### ACCEPTANCE TEST #####
 acceptance_test_stage = pipeline.ensure_stage("AcceptanceTests")
 acceptance_test_job = acceptance_test_stage.ensure_job("Run-Acceptance-Tests")
-acceptance_test_job.add_task(ExecTask(['type', 'README.md']))
+acceptance_test_job.add_task(ExecTask(['npm', 'run', 'acceptance-test']))
 
 ##### MOVE TO MAIN #####
 deploy_to_staging_stage = pipeline.ensure_stage("Deploy-To-Staging")
@@ -38,3 +38,5 @@ deploy_to_staging_job.add_task(ExecTask(['git', 'pull', 'origin', 'main']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'merge', 'dev', '-m', 'Automatic merge of dev into main', '--no-ff']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'remote', '-v']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'push', 'origin', 'main']))
+
+##### DEPLOY ######
