@@ -17,6 +17,7 @@
   </div>
   <div v-if="isBuyPopupVisible" class="popup-overlay">
       <div class="popup-content">
+        <img src="@/assets/easter-egg.webp" alt="Easter egg">
         <h2>Congratulations!</h2>
         <p>You have sold the stock for less than you bought it for!</p>
         <button @click="closeBuyPopup">Close</button>
