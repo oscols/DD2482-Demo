@@ -18,14 +18,14 @@
   <div v-if="isBuyPopupVisible" class="popup-overlay">
       <div class="popup-content">
         <h2>Congratulations!</h2>
-        <p>You have sold for less than you bought it for!</p>
+        <p>You have sold the stock for less than you bought it for!</p>
         <button @click="closeBuyPopup">Close</button>
       </div>
   </div>
   <div v-if="isSellPopupVisible" class="popup-overlay">
       <div class="popup-content">
         <h2>Ah...</h2>
-        <p>You seem to have sold for more than you bought it for...</p>
+        <p>You seem to have sold the stock for more than you bought it for...</p>
         <button @click="closeSellPopup">Close</button>
       </div>
   </div>
