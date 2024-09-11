@@ -88,8 +88,8 @@ export default {
 <style scoped>
   .chart {
     position: relative;
-    height: 550px;
-    width: 800px;
+    height: 500px;
+    width: 600px;
   }
   .button {
     position: relative;
