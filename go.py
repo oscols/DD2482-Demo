@@ -27,7 +27,7 @@ acceptance_test_stage = pipeline.ensure_stage("AcceptanceTests")
 acceptance_test_job = acceptance_test_stage.ensure_job("Run-Acceptance-Tests")
 acceptance_test_job.add_task(ExecTask(['npm', 'run', 'acceptance-test']))
 
-##### MOVE TO MAIN #####
+##### DEPLOY TO STAGING #####
 deploy_to_staging_stage = pipeline.ensure_stage("Deploy-To-Staging")
 deploy_to_staging_job = deploy_to_staging_stage.ensure_job("Merge-To-Main")
 deploy_to_staging_job.add_task(ExecTask(['git', 'fetch', 'origin']))
@@ -37,10 +37,7 @@ deploy_to_staging_job.add_task(ExecTask(['git', 'merge', 'dev', '-m', 'Automatic
 deploy_to_staging_job.add_task(ExecTask(['git', 'remote', '-v']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'push', 'origin', 'main']))
 
+#### DEPLOY TO PRODUCTION ####
 
-##DEPLOY###
-deploy_stage = pipeline.ensure_stage("Deploy")
-deploy_job = deploy_stage.ensure_job("Deploy")
-deploy_job.add_task(ExecTask(['curl', '-X', 'POST', '-d', '{}', 'https://webhooks.amplify.eu-north-1.amazonaws.com/prod/webhooks?id=b57011c8-555a-4e3f-a42b-cb98da6bfbee&token=ARd5niqCMa78GxjXxgBmk99klDQHbOnPZo1yQcs5Io&operation=startbuild', '-H', 'Content-Type:application/json'])) 
 
 configurator.save_updated_config()
