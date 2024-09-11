@@ -38,6 +38,8 @@ deploy_to_staging_job.add_task(ExecTask(['git', 'remote', '-v']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'push', 'origin', 'main']))
 
 #### DEPLOY TO PRODUCTION ####
-
+deploy_stage = pipeline.ensure_stage("Deploy")
+deploy_job = deploy_stage.ensure_job("Deploy")
+deploy_job.add_task(ExecTask(['curl', '-X', 'POST', '-d', '{}', 'https://webhooks.amplify.eu-north-1.amazonaws.com/prod/webhooks?id=b57011c8-555a-4e3f-a42b-cb98da6bfbee&token=ARd5niqCMa78GxjXxgBmk99klDQHbOnPZo1yQcs5Io&operation=startbuild', '-H', 'Content-Type:application/json'])) 
 
 configurator.save_updated_config()
