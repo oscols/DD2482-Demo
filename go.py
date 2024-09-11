@@ -39,5 +39,4 @@ deploy_to_staging_job.add_task(ExecTask(['git', 'push', 'origin', 'main']))
 
 #### DEPLOY TO PRODUCTION ####
 
-
 configurator.save_updated_config()
