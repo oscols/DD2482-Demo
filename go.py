@@ -37,4 +37,5 @@ deploy_to_staging_job.add_task(ExecTask(['git', 'merge', 'dev', '-m', 'Automatic
 deploy_to_staging_job.add_task(ExecTask(['git', 'remote', '-v']))
 deploy_to_staging_job.add_task(ExecTask(['git', 'push', 'origin', 'main']))
 
+
 configurator.save_updated_config()
