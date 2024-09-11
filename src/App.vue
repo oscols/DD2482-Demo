@@ -115,7 +115,6 @@ export default {
   align-items: center;
   z-index: 1000; /* Ensure it's on top */
 }
-/* Popup content */
 .popup-content {
   background-color: white;
   padding: 20px;
